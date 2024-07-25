@@ -67,7 +67,7 @@ const Login = () => {
               type="submit" 
               className="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out"
             >
-              Sign In
+              Login
             </button>
           </div>
           <p className="text-sm text-gray-600">
