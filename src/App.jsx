@@ -1,11 +1,12 @@
 import './App.css';
+import AddExpense from './components/AddExpense';
 import CreateGroup from './components/CreateGroup';
 import Home from './components/Home';
 import Login from './components/Login';
 import MyGroups from './components/MyGroups';
 import Signup from './components/signup';
 import UserDisplay from './components/UserDisplay';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   const token = localStorage.getItem('token');
@@ -19,15 +20,13 @@ function App() {
             <Route path="/User" element={<Home><UserDisplay /></Home>} />
             <Route path="/createGroup" element={<Home><CreateGroup/></Home>}/>
             <Route path="/MyGroup" element={<Home><MyGroups/></Home>}/>
-            {/* <Route path="*" element={<Navigate to="/home" />} /> */}
+            <Route path='/MyGroup/AddExpense' element={<Home><AddExpense/></Home>}/>
           </>
         ) : (
-          <>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            {/* <Route path="*" element={<Navigate to="/" />} /> */}
-          </>
+          <Navigate to='/'  />
         )}
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );

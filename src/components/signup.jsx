@@ -25,7 +25,7 @@ const Signup = () => {
 
       if (response.status >= 200) {
         setMessage('Signup successful');
-        navigate('/home')
+        navigate('/User')
         // Redirect or perform actions after successful signup
       } else {
         throw new Error('Signup failed');

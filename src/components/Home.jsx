@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import { FiLogOut } from 'react-icons/fi';
+
 
 const Home = ({ children }) => {
-  const navigate = useNavigate();
-
+  
   const handleClickUser = () => {
     navigate('/User');
   };
@@ -13,11 +14,14 @@ const Home = ({ children }) => {
     navigate('/MyGroup');
   };
 
+  
+
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    // Clear user session (e.g., remove token from localStorage)
+
     localStorage.removeItem('token');
-    // Redirect to login page and force refresh
-    window.location.href = '/';
+    navigate('/');
   };
 
   return (
@@ -45,7 +49,7 @@ const Home = ({ children }) => {
           className="text-white font-bold text-lg mt-auto cursor-pointer transform transition-transform duration-200 hover:scale-105 p-2 rounded"
           onClick={handleLogout}
         >
-          Logout
+          <FiLogOut size={30}/>
         </p>
       </div>
       <div className="ml-[14vw] w-full p-6 bg-gray-100 overflow-auto">

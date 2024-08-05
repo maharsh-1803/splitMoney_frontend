@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MyGroups = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -43,6 +45,10 @@ const MyGroups = () => {
     return <div className="text-center py-6 text-red-500">{error}</div>;
   }
 
+  const handleAddExpense = ()=>{
+    navigate('/MyGroup/AddExpense');
+  }
+
   return (
     <div className="p-6 max-w-6xl mx-auto bg-white shadow-lg rounded-lg">
       <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">My Groups</h1>
@@ -51,7 +57,7 @@ const MyGroups = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {groups.map((group) => (
-            <div key={group._id} className="p-4 border rounded-lg bg-gray-50 shadow-md hover:bg-gray-100 transition duration-200">
+            <div key={group._id} className="p-3 border rounded-lg bg-gray-50 shadow-md hover:bg-gray-100 transition duration-200">
               <h2 className="text-xl font-semibold text-gray-700 mb-2">{group.name}</h2>
               <p className="text-sm text-gray-500 mb-2">Type: <span className="font-medium text-gray-600">{group.groupType}</span></p>
               <p className="text-sm font-medium text-gray-600 mb-2">Members:</p>
@@ -60,6 +66,7 @@ const MyGroups = () => {
                   <li key={member._id} className="text-gray-700">{member.username}</li>
                 ))}
               </ul>
+              <button className='float-end border p-2 rounded-md bg-sky-600 text-white hover:cursor-pointer' onClick={handleAddExpense}>Add Expense</button>
             </div>
           ))}
         </div>
